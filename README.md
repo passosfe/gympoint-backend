@@ -10,6 +10,6 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 ### - POST
 
-#### Inicio de Sessão
+#### 1. Inicio de Sessão
 
 Todas as solicitações
