@@ -21,8 +21,8 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 - [1. Inicio de Sessão](#1.-Inicio-de-Sessão)
 - [2. Criação de Alunos](#2.-Criação-de-Alunos)
-- [3. Update de Alunos](#1.-Update-de-Alunos)
-- [4. Update de Usuários](#2.-Update-de-Usuários)
+- [3. Update de Alunos](####3.-Update-de-Alunos)
+- [4. Update de Usuários](#4.-Update-de-Usuários)
 
 3. [TODO](#TODO)
 4. [Licença](#Licença)
