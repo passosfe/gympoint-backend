@@ -21,6 +21,8 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 }
 ```
 
+**ATENÇÃO:** Todos os campos desta requisição são obrigatórios.
+
 - Caso o inicio de sessão seja aceito, a resposta conterá as seguintes informações:
 
 ```json
@@ -46,11 +48,27 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 
 #### 1. Início de Sessão
 
-- Caso o email de usuário não corresponda a nenhum usuário cadastrado, a resposta do servidor conterá um erro do tipo `{ "error": "User does not exist"}`.
+- `{ error: 'Validation failed' }`
 
-- Caso o email exista, porém a senha esteja incorreta, a resposta do servidor contera o seguinte erro: `{ "error": "Wrong Password" }`.
+Este erro ocorre quando o corpo da requisição contém algum erro, verifique se todos os campos nessessários estão presentes e se estão preenchidos corretamente.
+
+- `{ "error": "User does not exist"}`
+
+Este erro ocorre quando o email de usuário no corpo da requisição não pode ser encotrado no banco de usuários cadastrados. Verifique se o email está correto e tente novamente.
+
+- `{ "error": "Wrong Password" }`
+
+Este erro ocorre quando a senha enviada no corpo da requisição não corresponde à senha cadastrada ao usuário. Verifique se a senha está correta e tente novamente.
 
 ## TODO
+
+- [x] Inicio de Sessão
+- [x] Cadastro de Alunos
+- [x] Update de Alunos
+- [ ] Exclusão de Alunos
+- [ ] Criação de Usuários
+- [x] Update de Usuários
+- [ ] Exclusão de Usuários
 
 ## Licença
 
