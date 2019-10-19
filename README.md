@@ -65,7 +65,7 @@ Caso a requsição seja aceita, a resposta conterá os seguintes dados:
 }
 ```
 
-Caso ocorra algum erro com a requisição, verifique na sessão de [Possíveis Erros](##-Possíveis-Erros)
+Caso ocorra algum erro com a requisição, verifique na sessão de [Possíveis Erros](##Possíveis-Erros)
 
 ### - `PUT`
 
