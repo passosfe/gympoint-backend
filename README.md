@@ -69,7 +69,7 @@ Caso a requsição seja aceita, a resposta conterá os seguintes dados:
 }
 ```
 
-Caso ocorra algum erro com a requisição, verifique na sessão de [Possíveis Erros](##Possíveis-Erros)
+Caso ocorra algum erro com a requisição, verifique na sessão de erros em [2. Criação de Alunos](##2.-Criação-de-Alunos)
 
 ### - `PUT`
 
@@ -92,6 +92,8 @@ Este erro ocorre quando o email de usuário no corpo da requisição não pode s
 - `"Wrong Password"`
 
 Este erro ocorre quando a senha enviada no corpo da requisição não corresponde à senha cadastrada ao usuário. Verifique se a senha está correta e tente novamente.
+
+#### 2. Criação de Alunos
 
 ## TODO
 
