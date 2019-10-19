@@ -6,6 +6,10 @@ O Gympoint é um app gerenciador de Academia. Com ele é possível gerenciar as 
 
 O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `express` como framework web, o `sequelize` para comunicação com o banco de dados PostgreSQL e o `jsonwebtoken` para autenticação de usuários.
 
+### Tabela de Conteúdo
+
+- [Possíveis Erros](#Possíveis-Erros)
+
 ## Rotas
 
 ### - `POST`
