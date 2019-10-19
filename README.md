@@ -23,7 +23,7 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 
 **ATENÇÃO:** Todos os campos desta requisição são obrigatórios.
 
-- Caso o inicio de sessão seja aceito, a resposta conterá as seguintes informações:
+Caso o inicio de sessão seja aceito, a resposta conterá as seguintes informações:
 
 ```json
 {
@@ -36,7 +36,36 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 }
 ```
 
+O token gerado será solicitado para todas as requisições de `POST` e `PUT`
+
 #### 2. Criação de Alunos
+
+Para criar um `aluno` no banco de dados, deve ser enviada uma requisição do tipo `POST` para o endereço `http://localhost:3334/students`. A requisição deve enviar dentro do bearer token, o token gerado no início de sessão. Dentro do corpo da requisição, são esperados os seguintes parâmetros:
+
+```json
+{
+  "name": "Name",
+  "email": "student@email.com",
+  "age": 20,
+  "weight": 50.5,
+  "height": 150
+}
+```
+
+Caso a requsição seja aceita, a resposta conterá os seguintes dados:
+
+```json
+{
+  "id": 4,
+  "name": "Name",
+  "email": "student@email.com",
+  "age": 20,
+  "weight": 50.5,
+  "height": 150
+}
+```
+
+Caso ocorra algum erro com a requisição, verifique na sessão de [Possíveis Erros](##-Possíveis-Erros)
 
 ### - `PUT`
 
@@ -48,15 +77,15 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 
 #### 1. Início de Sessão
 
-- `{ error: 'Validation failed' }`
+- `"Validation failed"`
 
 Este erro ocorre quando o corpo da requisição contém algum erro, verifique se todos os campos nessessários estão presentes e se estão preenchidos corretamente.
 
-- `{ "error": "User does not exist"}`
+- `"User does not exist"`
 
 Este erro ocorre quando o email de usuário no corpo da requisição não pode ser encotrado no banco de usuários cadastrados. Verifique se o email está correto e tente novamente.
 
-- `{ "error": "Wrong Password" }`
+- `"Wrong Password"`
 
 Este erro ocorre quando a senha enviada no corpo da requisição não corresponde à senha cadastrada ao usuário. Verifique se a senha está correta e tente novamente.
 
