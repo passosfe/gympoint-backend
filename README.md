@@ -11,7 +11,7 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 1. [Rotas](#Rotas)
 
 - [Post](#--`POST`)
-  - [1. Inicio de Sessão](#1.-Inicio-de-Sessão)
+  - [1. Inicio de Sessão](####1.-Inicio-de-Sessão)
   - [2. Criação de Alunos](#2.-Criação-de-Alunos)
 - [Post](#--`PUT`)
   - [3. Update de Alunos](#1.-Update-de-Alunos)
