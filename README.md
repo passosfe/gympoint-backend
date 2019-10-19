@@ -12,4 +12,11 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 #### 1. Inicio de Sessão
 
-Todas as solicitações
+Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autenticadas com um token que é providenciado após o inicio de sessão. Para solicitar, deve ser enviada uma solicitação do tipo `POST` para o endereço: `http://localhost:3334/sessions`. No corpo da requisição, são esperadas as seguintes informações no formato JSON:
+
+```json
+{
+  "email": "user@email.com",
+  "password": "userpassword"
+}
+```
