@@ -8,7 +8,7 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 ## Rotas
 
-### - POST
+### - `POST`
 
 #### 1. Inicio de Sessão
 
@@ -36,7 +36,7 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 
 #### 2. Criação de Alunos
 
-### - PUT
+### - `PUT`
 
 #### 1. Update de Alunos
 
@@ -52,6 +52,6 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 
 ## TODO
 
-## License
+## Licença
 
-This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
+Este projeto é licencisado sob a licença MIT.
