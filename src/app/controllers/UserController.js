@@ -40,10 +40,12 @@ class UserController {
 
     const { id, name } = await user.update(req.body);
 
+    const user_email = user.email;
+
     return res.json({
       id,
       name,
-      email,
+      user_email,
     });
   }
 }
