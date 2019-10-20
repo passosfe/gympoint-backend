@@ -10,16 +10,16 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 1. [Rotas](#Rotas)
 
-- [POST](#`POST`)
+- [POST](#POST)
   - [1. Inicio de Sessão](#1-Inicio-de-Sessão)
   - [2. Criação de Alunos](#2-Criação-de-Alunos)
-- [PUT](#-PUT)
+- [PUT](#PUT)
   - [3. Update de Alunos](#1-Update-de-Alunos)
   - [4. Update de Usuários](#2-Update-de-Usuários)
 
 2. [Possíveis Erros](#Possíveis-Erros)
 
-- [1. Inicio de Sessão](#Inicio-de-Sessão)
+- [1. Inicio de Sessão](#Início-de-Sessão)
 - [2. Criação de Alunos](#Criação-de-Alunos)
 - [3. Update de Alunos](#Update-de-Alunos)
 - [4. Update de Usuários](#Update-de-Usuários)
@@ -29,7 +29,7 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 ## Rotas
 
-### `POST`
+### POST
 
 #### 1. Inicio de Sessão
 
@@ -90,7 +90,7 @@ Caso a requsição seja aceita, a resposta conterá os seguintes dados:
 
 Caso ocorra algum erro com a requisição, verifique na sessão de erros em [erros na criação de alunos](#Criação-de-Alunos).
 
-### `PUT`
+### PUT
 
 #### 1. Update de Alunos
 
