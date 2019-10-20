@@ -10,19 +10,19 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 1. [Rotas](#Rotas)
 
-- [Post](#--`POST`)
-  - [1. Inicio de Sessão](####1-Inicio-de-Sessão)
+- [Post](#POST)
+  - [1. Inicio de Sessão](#1-Inicio-de-Sessão)
   - [2. Criação de Alunos](#2-Criação-de-Alunos)
-- [Post](#--`PUT`)
+- [Post](#PUT)
   - [3. Update de Alunos](#1-Update-de-Alunos)
   - [4. Update de Usuários](#2-Update-de-Usuários)
 
 2. [Possíveis Erros](#Possíveis-Erros)
 
-- [1. Inicio de Sessão](#1-Inicio-de-Sessão)
-- [2. Criação de Alunos](#2-Criação-de-Alunos)
-- [3. Update de Alunos](####3-Update-de-Alunos)
-- [4. Update de Usuários](#4-Update-de-Usuários)
+- [1. Inicio de Sessão](#Inicio-de-Sessão)
+- [2. Criação de Alunos](#Criação-de-Alunos)
+- [3. Update de Alunos](#Update-de-Alunos)
+- [4. Update de Usuários](#Update-de-Usuários)
 
 3. [TODO](#TODO)
 4. [Licença](#Licença)
@@ -88,7 +88,7 @@ Caso a requsição seja aceita, a resposta conterá os seguintes dados:
 }
 ```
 
-Caso ocorra algum erro com a requisição, verifique na sessão de erros em [erros na criação de alunos](#2.-Criação-de-Alunos).
+Caso ocorra algum erro com a requisição, verifique na sessão de erros em [erros na criação de alunos](#Criação-de-Alunos).
 
 ### - `PUT`
 
@@ -122,7 +122,7 @@ Caso a requsição seja aceita, a resposta conterá os seguintes dados:
 }
 ```
 
-Caso ocorra algum erro com a requisição, verifique na sessão de [erros na atualização de alunos](####3.-Update-de-Alunos).
+Caso ocorra algum erro com a requisição, verifique na sessão de [erros na atualização de alunos](#Update-de-Alunos).
 
 #### 2. Update de Usuários
 
@@ -150,11 +150,11 @@ Caso a requsição seja aceita, a resposta conterá os seguintes dados:
 }
 ```
 
-Caso ocorra algum erro com a requisição, verifique na sessão de [erros na atualização de usuários](####4.-Update-de-Usuários).
+Caso ocorra algum erro com a requisição, verifique na sessão de [erros na atualização de usuários](#Update-de-Usuários).
 
 ## Possíveis Erros
 
-#### 1. Início de Sessão
+#### Início de Sessão
 
 - `"Validation failed"`
 
@@ -168,7 +168,7 @@ Este erro ocorre quando o email de usuário no corpo da requisição não pode s
 
 Este erro ocorre quando a senha enviada no corpo da requisição não corresponde à senha cadastrada ao usuário. Verifique se a senha está correta e tente novamente.
 
-#### 2. Criação de Alunos
+#### Criação de Alunos
 
 - `"Validation failed"`
 
@@ -178,7 +178,7 @@ Este erro ocorre quando o corpo da requisição contém algum erro, verifique se
 
 Este erro ocorre quando o e-mail que está sendo enviado para inserção já se encontra no banco de dados dos alunos. Possivelmente o `aluno` já existe ou outro `aluno` já está cadastrado usando este e-mail. Verifique o e-mail e tente novamente.
 
-#### 3. Update de Alunos
+#### Update de Alunos
 
 - `"Validation failed"`
 
@@ -192,7 +192,7 @@ Este erro ocorre quando o e-mail enviado para encontrar o `aluno` a ser atualiza
 
 Este erro ocorre quando o novo e-mail do `aluno` a ser atualizado, já corresponde ao e-mail de outro `aluno` já cadastrado. Utilize outro e-mail para atualizar.
 
-#### 4. Update de Usuários
+#### Update de Usuários
 
 - `"Validation failed"`
 
