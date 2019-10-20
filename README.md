@@ -10,7 +10,7 @@ O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `expres
 
 1. [Rotas](#Rotas)
 
-- [Post](#-POST)
+- [POST](#`POST`)
   - [1. Inicio de Sessão](#1-Inicio-de-Sessão)
   - [2. Criação de Alunos](#2-Criação-de-Alunos)
 - [PUT](#-PUT)
