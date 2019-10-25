@@ -18,7 +18,8 @@ routes.put('/students', StudentController.update);
 
 routes.get('/subscriptions', SubscriptionController.index);
 routes.post('/subscriptions', SubscriptionController.create);
-routes.put('/subscriptions:id', SubscriptionController.update);
+routes.put('/subscriptions/:id', SubscriptionController.update);
+routes.delete('/subscriptions/:id', SubscriptionController.delete);
 
 routes.put('/users', UserController.update);
 
