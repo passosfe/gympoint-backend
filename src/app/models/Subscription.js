@@ -8,6 +8,12 @@ class Subscription extends Model {
         duration: Sequelize.INTEGER,
         price: Sequelize.FLOAT,
         discontinued_at: Sequelize.DATE,
+        total_price: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return this.price * this.duration;
+          },
+        },
       },
       {
         sequelize,

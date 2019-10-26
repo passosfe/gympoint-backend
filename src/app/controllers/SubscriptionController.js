@@ -14,7 +14,7 @@ class SubscriptionController {
     return res.json(subscriptions);
   }
 
-  async create(req, res) {
+  async store(req, res) {
     const schema = Yup.object().shape({
       title: Yup.string().required(),
       duration: Yup.number().required(),
