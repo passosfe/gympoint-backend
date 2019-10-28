@@ -5,6 +5,9 @@ import { Op } from 'sequelize';
 import Enrollment from '../models/Enrollment';
 import Student from '../models/Student';
 import Subscription from '../models/Subscription';
+import CancellationMail from '../jobs/CancellationMail';
+import Queue from '../../lib/Queue';
+import WelcomeMail from '../jobs/WelcomeMail';
 
 class EnrollmentController {
   async index(req, res) {
@@ -19,7 +22,7 @@ class EnrollmentController {
       order: ['end_date'],
       limit: 20,
       offset: (page - 1) * 20,
-      attributes: ['start_date', 'end_date', 'price'],
+      attributes: ['id', 'start_date', 'end_date', 'price'],
       include: [
         {
           model: Student,
@@ -76,6 +79,25 @@ class EnrollmentController {
       price: subscription.total_price,
     });
 
+    const enrollmentData = await Enrollment.findByPk(enrollment.id, {
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name', 'email'],
+        },
+        {
+          model: Subscription,
+          as: 'subscription',
+          attributes: ['title', 'price'],
+        },
+      ],
+    });
+
+    await Queue.add(WelcomeMail.key, {
+      enrollment: enrollmentData,
+    });
+
     return res.json(enrollment);
   }
 
@@ -123,7 +145,7 @@ class EnrollmentController {
 
   async delete(req, res) {
     const enrollment = await Enrollment.findByPk(req.params.id, {
-      attributes: ['id', 'price', 'canceled_at', 'is_valid'],
+      attributes: ['id', 'price', 'canceled_at', 'is_valid', 'end_date'],
       include: [
         {
           model: Student,
@@ -141,6 +163,10 @@ class EnrollmentController {
     enrollment.canceled_at = new Date();
 
     await enrollment.save();
+
+    await Queue.add(CancellationMail.key, {
+      enrollment,
+    });
 
     return res.json(enrollment);
   }

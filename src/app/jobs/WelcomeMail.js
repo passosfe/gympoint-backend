@@ -2,9 +2,9 @@ import { format, parseISO } from 'date-fns';
 
 import Mail from '../../lib/Mail';
 
-class CancellationMail {
+class WelcomeMail {
   get key() {
-    return 'CancellationMail';
+    return 'WelcomeMail';
   }
 
   async handle({ data }) {
@@ -12,14 +12,16 @@ class CancellationMail {
 
     await Mail.sendMail({
       to: `${enrollment.student.name} <${enrollment.student.email}>`,
-      subject: 'Your enrollment has been canceled',
-      template: 'cancellation',
+      subject: 'Your enrollment has been confirmed!',
+      template: 'welcoming',
       context: {
         student: enrollment.student.name,
+        subscription: enrollment.subscription.title,
         date: format(parseISO(enrollment.end_date), "MMMM dd' at 'H:mm'h'"),
+        price: enrollment.price,
       },
     });
   }
 }
 
-export default new CancellationMail();
+export default new WelcomeMail();
