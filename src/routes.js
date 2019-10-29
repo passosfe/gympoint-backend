@@ -5,9 +5,10 @@ import StudentController from './app/controllers/StudentController';
 import UserController from './app/controllers/UserController';
 import SubscriptionController from './app/controllers/SubscriptionController';
 import EnrollmentController from './app/controllers/EnrollmentController';
+import CheckinController from './app/controllers/CheckinController';
+import HelpOrderController from './app/controllers/HelpOrderController';
 
 import authMiddleware from './app/middlewares/auth';
-import CheckinController from './app/controllers/CheckinController';
 
 const routes = new Router();
 
@@ -19,6 +20,11 @@ routes.get('/enrollments', EnrollmentController.index);
 routes.post('/enrollments', EnrollmentController.store);
 routes.put('/enrollments/:id', EnrollmentController.update);
 routes.delete('/enrollments/:id', EnrollmentController.delete);
+
+routes.get('/help-orders', HelpOrderController.indexUnanswered);
+routes.get('/students/:id/help-orders', HelpOrderController.indexByUser);
+routes.post('/students/:id/help-orders', HelpOrderController.storeQuestion);
+routes.post('/help-orders/:id/answer', HelpOrderController.storeAnswer);
 
 routes.post('/students', StudentController.store);
 routes.put('/students', StudentController.update);
