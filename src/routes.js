@@ -7,6 +7,7 @@ import SubscriptionController from './app/controllers/SubscriptionController';
 import EnrollmentController from './app/controllers/EnrollmentController';
 
 import authMiddleware from './app/middlewares/auth';
+import CheckinController from './app/controllers/CheckinController';
 
 const routes = new Router();
 
@@ -21,6 +22,9 @@ routes.delete('/enrollments/:id', EnrollmentController.delete);
 
 routes.post('/students', StudentController.store);
 routes.put('/students', StudentController.update);
+
+routes.get('/students/:id/checkins', CheckinController.index);
+routes.post('/students/:id/checkins', CheckinController.store);
 
 routes.get('/subscriptions', SubscriptionController.index);
 routes.post('/subscriptions', SubscriptionController.store);
