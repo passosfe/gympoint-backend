@@ -1,39 +1,78 @@
 # GYMPOINT - Backend
 
-## Descrição do Projeto
+Gympoint is a Gym manager app. With it you can manage the accounts and information of both users and students.
 
-O Gympoint é um app gerenciador de Academia. Com ele é possível gerenciar as contas e informações tanto dos usuários, quanto dos alunos.
+## About This Project
 
-O backend da aplicação está sendo desenvolvido em Node.js e utiliza o `express` como framework web, o `sequelize` para comunicação com o banco de dados PostgreSQL e o `jsonwebtoken` para autenticação de usuários.
+The application backend is being developed in Node.js and uses `express` as the web framework,`sequelize` for communication with PostgreSQL database and `jsonwebtoken` for user authentication.
 
-### Tabela de Conteúdo
+Also `bee-queue` is used as a job queue using `Redis` to send emails using `node-mailer`, `handlebars` to configure each email and `Mailtrap` for testing purposes, triggered by certain events wich will be described here.
 
-1. [Rotas](#Rotas)
+Feel free to clone this project for anything you want.
+
+### About Me
+
+Email: passos.fe@gmail.com
+
+Connect at [LinkedIn](https://www.linkedin.com/in/passosfe/)
+
+## Table of Contents
+
+1. [Getting Started](#Getting-Started)
+2. [Routes](#Routes)
 
 - [POST](#POST)
-  - [1. Inicio de Sessão](#1-Inicio-de-Sessão)
-  - [2. Criação de Alunos](#2-Criação-de-Alunos)
+  - [1. Session Start](#1-Session-Start)
+  - [2. Student Creation](#2-Student-Creation)
 - [PUT](#PUT)
-  - [3. Update de Alunos](#1-Update-de-Alunos)
-  - [4. Update de Usuários](#2-Update-de-Usuários)
-
-2. [Possíveis Erros](#Possíveis-Erros)
-
-- [1. Inicio de Sessão](#Início-de-Sessão)
-- [2. Criação de Alunos](#Criação-de-Alunos)
-- [3. Update de Alunos](#Update-de-Alunos)
-- [4. Update de Usuários](#Update-de-Usuários)
+  - [3. Update Student](#1-Update-Student)
+  - [4. Update User](#2-Update-User)
 
 3. [TODO](#TODO)
-4. [Licença](#Licença)
+4. [License](#License)
 
-## Rotas
+## Getting Started
 
-### POST
+### Prerequisites
 
-#### 1. Inicio de Sessão
+In order to run this project you must have the following in your computer:
 
-Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autenticadas com um token que é providenciado após o inicio de sessão. Para solicitar, deve ser enviada uma solicitação do tipo `POST` para o endereço: `http://localhost:3334/sessions`. No corpo da requisição, são esperadas as seguintes informações no formato JSON:
+- Node.js v8+
+- PostgreSQL (Running on default port 5432)
+- Redis (Running on default port 6379)
+- Mailtrap account
+
+### Installing
+
+**Cloning the Repository**
+
+```
+$ git clone https://github.com/passosfe/gympass-backend
+
+$ cd gympass-backend
+```
+
+**Installing dependencies**
+
+```
+$ yarn
+```
+
+_or_
+
+```
+$ npm install
+```
+
+## Routes
+
+Base URL: http://localhost:3334/
+
+### Sessions
+
+- **This route is where you can get the token wich is required to access other endpoints in the API.**
+
+All ** CREATION ** and ** MODIFICATION ** requests must be authenticated with a token that is provided after login. To request, a `POST` request must be sent to the address:`http://localhost:3334/sessions`. In the request's body, the following information is expected in JSON format:
 
 ```json
 {
@@ -42,9 +81,9 @@ Todas as solicitações de **CRIAÇÃO** e **MODIFICAÇÃO** devem ser autentica
 }
 ```
 
-**ATENÇÃO:** Todos os campos desta requisição são obrigatórios.
+** PLEASE NOTE: ** All fields in this request are required.
 
-Caso o inicio de sessão seja aceito, a resposta conterá as seguintes informações:
+If login is accepted, the response will be as follows:
 
 ```json
 {
@@ -57,7 +96,7 @@ Caso o inicio de sessão seja aceito, a resposta conterá as seguintes informaç
 }
 ```
 
-O token gerado será solicitado para todas as requisições de `POST` e `PUT`
+The generated token will be requested for all the following `POST` and`PUT` requests.
 
 #### 2. Criação de Alunos
 
@@ -152,6 +191,8 @@ Caso a requsição seja aceita, a resposta conterá os seguintes dados:
 
 Caso ocorra algum erro com a requisição, verifique na sessão de [erros na atualização de usuários](#Update-de-Usuários).
 
+## Models
+
 ## Possíveis Erros
 
 #### Início de Sessão
@@ -202,16 +243,29 @@ Este erro ocorre quando o corpo da requisição contém algum erro, verifique se
 
 Este erro ocorre quando o novo e-mail do `usuário` a ser atualizado, já corresponde ao e-mail de outro `usuário` já cadastrado. Utilize outro e-mail para atualizar.
 
-## TODO
+## Contributing
 
-- [x] Inicio de Sessão
-- [x] Cadastro de Alunos
-- [x] Update de Alunos
-- [ ] Exclusão de Alunos
-- [ ] Criação de Usuários
-- [x] Update de Usuários
-- [ ] Exclusão de Usuários
+## Built With
 
-## Licença
+- [NodeJS](https://nodejs.org/en/) - Server
+- [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Hash generator
+- [sequelize](https://sequelize.org/) - ORM for Postgres
+- [yup](https://github.com/jquense/yup) - Object schema validator
+- [express](https://expressjs.com/) - Router
+- [sucrase](https://github.com/alangpierce/sucrase) - Transpiling
+- [nodemon](https://nodemon.io/) - Process Manager used in the development
+- [dotenv](https://github.com/motdotla/dotenv) - Environment loader
+- [eslint](https://eslint.org/) - JS Linter and code style
+- [prettier](https://github.com/prettier/prettier) - Code formatter
+- [bee-queue](https://bee-queue.com/) - Redis-backed job queue for Node.js
+- [date-fns](https://date-fns.org/) - Date utility
+- [express-handlebars](https://www.npmjs.com/package/express-handlebars) - Handlebars view engine for Express
+- [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - JSON Web Tokens
+- [nodemailer](https://nodemailer.com/about/) - Email sending
+- [nodemailer-express-handlebars](https://github.com/yads/nodemailer-express-handlebars) - Plugin for Nodemailer
+- [pg](https://github.com/brianc/node-postgres) - PostgreSQL client for Node.js
+- [pg-hstore](https://github.com/scarney81/pg-hstore) - Serializing and deserializing JSON data to hstore format
+
+## License
 
 Este projeto é licencisado sob a licença MIT.
