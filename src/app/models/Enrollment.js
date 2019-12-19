@@ -1,4 +1,4 @@
-import { isBefore } from 'date-fns';
+import { isBefore, isAfter } from 'date-fns';
 
 import Sequelize, { Model } from 'sequelize';
 
@@ -13,7 +13,10 @@ class Enrollment extends Model {
         is_valid: {
           type: Sequelize.VIRTUAL,
           get() {
-            return isBefore(this.end_date, new Date());
+            return (
+              isAfter(this.end_date, new Date()) &&
+              isBefore(this.start_date, new Date())
+            );
           },
         },
       },

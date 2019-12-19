@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
-
 import Student from '../models/Student';
+
+import { Op } from 'sequelize';
 
 class StudentController {
   async store(req, res) {
@@ -83,6 +84,24 @@ class StudentController {
       weight,
       height,
     });
+  }
+
+  async search(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string(),
+    });
+
+    if (!(await schema.isValid(req.query))) {
+      return res.status(401).json({ error: 'Name must be a string' });
+    }
+
+    const { name } = req.query;
+
+    const students = await Student.findAll(
+      name ? { where: { name: { [Op.like]: name } } } : {}
+    );
+
+    return res.json(students);
   }
 }
 

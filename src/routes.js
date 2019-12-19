@@ -26,6 +26,7 @@ routes.get('/students/:id/help-orders', HelpOrderController.indexByUser);
 routes.post('/students/:id/help-orders', HelpOrderController.storeQuestion);
 routes.post('/help-orders/:id/answer', HelpOrderController.storeAnswer);
 
+routes.get('/students', StudentController.search);
 routes.post('/students', StudentController.store);
 routes.put('/students', StudentController.update);
 
