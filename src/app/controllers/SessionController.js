@@ -25,7 +25,7 @@ class SessionController {
       return res.status(401).json({ error: 'User does not exist' });
     }
 
-    if (!user.checkPassword(password)) {
+    if (!(await user.checkPassword(password))) {
       res.status(401).json({ error: 'Wrong Password' });
     }
 

@@ -26,9 +26,10 @@ routes.get('/students/:id/help-orders', HelpOrderController.indexByUser);
 routes.post('/students/:id/help-orders', HelpOrderController.storeQuestion);
 routes.post('/help-orders/:id/answer', HelpOrderController.storeAnswer);
 
-routes.get('/students', StudentController.search);
+routes.get('/students', StudentController.index);
+routes.get('/students/:id', StudentController.get);
 routes.post('/students', StudentController.store);
-routes.put('/students', StudentController.update);
+routes.put('/students/:id', StudentController.update);
 
 routes.get('/students/:id/checkins', CheckinController.index);
 routes.post('/students/:id/checkins', CheckinController.store);

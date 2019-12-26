@@ -4,6 +4,24 @@ import Student from '../models/Student';
 import { Op } from 'sequelize';
 
 class StudentController {
+  async index(req, res) {
+    const { page = 1, per_page = 5, name = '' } = req.query;
+
+    const { rows: students, count } = await Student.findAndCountAll({
+      where: {
+        [Op.or]: [
+          { name: { [Op.iLike]: `%${name}%` } },
+          { email: { [Op.iLike]: `%${name}%` } },
+        ],
+      },
+      offset: (page - 1) * per_page,
+      limit: per_page,
+      order: [['updated_at', 'DESC']],
+    });
+
+    return res.set({ num_pages: Math.ceil(count / per_page) }).json(students);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -42,9 +60,7 @@ class StudentController {
   async update(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string(),
-      email: Yup.string()
-        .email()
-        .required(),
+      email: Yup.string().email(),
       new_email: Yup.string().email(),
       age: Yup.number(),
       weight: Yup.number(),
@@ -55,10 +71,10 @@ class StudentController {
       return res.status(400).json({ error: 'Validation failed' });
     }
 
-    const student = await Student.findOne({ where: { email: req.body.email } });
+    const student = await Student.findByPk(req.params.id);
 
     if (!student) {
-      return res.status(401).json({ error: 'User email not found' });
+      return res.status(401).json({ error: 'User not found' });
     }
 
     const { new_email } = req.body;
@@ -86,23 +102,15 @@ class StudentController {
     });
   }
 
-  async search(req, res) {
-    const schema = Yup.object().shape({
-      name: Yup.string(),
-    });
+  async get(req, res) {
+    const { id } = req.params;
 
-    if (!(await schema.isValid(req.query))) {
-      return res.status(401).json({ error: 'Name must be a string' });
-    }
+    const student = await Student.findByPk(id);
 
-    const { name } = req.query;
-
-    const students = await Student.findAll(
-      name ? { where: { name: { [Op.like]: name } } } : {}
-    );
-
-    return res.json(students);
+    return res.json(student);
   }
+
+  async delete(req, res) {}
 }
 
 export default new StudentController();
